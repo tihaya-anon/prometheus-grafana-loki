@@ -1,3 +1,12 @@
 [sandbox_policy]
 mode = "workspace-write"
 network_access = "enabled"
+
+[mcp_servers.grafana]
+command = "uvx"
+args = ["mcp-grafana"]
+env_vars = ["GRAFANA_SERVICE_ACCOUNT_TOKEN"]
+
+[mcp_servers.grafana.env]
+GRAFANA_URL = "http://localhost:3000"
+UV_CACHE_DIR = "/tmp/.uv-cache"
