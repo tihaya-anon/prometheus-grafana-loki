@@ -1,4 +1,4 @@
-.PHONY: pull up down restart ps logs validate smoke
+.PHONY: pull up down restart ps logs test validate smoke
 
 pull:
 	docker compose pull
@@ -17,6 +17,9 @@ ps:
 
 logs:
 	docker compose logs -f --tail=200
+
+test:
+	./scripts/github/test.sh
 
 validate:
 	./scripts/validate.sh
