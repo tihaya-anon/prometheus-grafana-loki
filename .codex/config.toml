@@ -10,3 +10,6 @@ env_vars = ["GRAFANA_SERVICE_ACCOUNT_TOKEN"]
 [mcp_servers.grafana.env]
 GRAFANA_URL = "http://localhost:3000"
 UV_CACHE_DIR = "/tmp/.uv-cache"
+
+[mcp_servers.grafana.tools.grafana_api_request]
+approval_mode = "approve"
