@@ -78,4 +78,7 @@ datasources:
         spanEndTimeShift: 1h
       streamingEnabled:
         search: false
-        metrics: true
+        # Grafana 13 streaming metrics uses Tempo's gRPC StreamingQuerier.
+        # The provisioned datasource URL is Tempo's HTTP endpoint, so keep
+        # metrics streaming disabled unless a gRPC endpoint is provisioned.
+        metrics: false
