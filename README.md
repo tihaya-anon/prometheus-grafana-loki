@@ -86,7 +86,7 @@ OTLP/gRPC uses port `4317`, and OTLP/HTTP uses port `4318`. Alloy converts OTLP 
 
 ## Log Correlation
 
-Alloy discovers containers through the Docker socket and adds the `service_name`, `container`, `compose_project`, and `stream` labels to their logs.
+Alloy discovers containers through the Docker socket and collects logs only from containers attached to the `observability` network. It adds the `service_name`, `container`, `compose_project`, and `stream` labels to their logs.
 
 For links from logs to Tempo traces, application logs should contain a 32-character hexadecimal trace ID:
 

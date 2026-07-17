@@ -12,6 +12,12 @@ discovery.relabel "docker_logs" {
   targets = []
 
   rule {
+    source_labels = ["__meta_docker_network_name"]
+    regex         = "observability"
+    action        = "keep"
+  }
+
+  rule {
     source_labels = ["__meta_docker_container_name"]
     regex         = "/(.*)"
     target_label  = "container"

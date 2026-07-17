@@ -1,4 +1,4 @@
-.PHONY: pull up down restart ps logs test validate smoke
+.PHONY: pull up down down-v restart ps logs test validate smoke
 
 pull:
 	docker compose pull
@@ -8,6 +8,9 @@ up:
 
 down:
 	docker compose down
+
+down-v:
+	docker compose down -v
 
 restart:
 	docker compose restart
