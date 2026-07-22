@@ -117,6 +117,7 @@ services:
 networks:
   observability:
     name: observability
+    external: true
 
 volumes:
   prometheus-data:
