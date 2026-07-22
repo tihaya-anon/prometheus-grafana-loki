@@ -121,4 +121,5 @@ make ps
 make logs
 make restart
 make down
+make clear-otel-data
 ```

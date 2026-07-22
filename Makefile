@@ -1,4 +1,8 @@
-.PHONY: pull up down down-v restart ps logs test validate smoke
+COMPOSE_PROJECT_NAME ?= pgl
+export COMPOSE_PROJECT_NAME
+OTEL_DATA_VOLUMES := $(COMPOSE_PROJECT_NAME)_prometheus-data $(COMPOSE_PROJECT_NAME)_loki-data $(COMPOSE_PROJECT_NAME)_tempo-data
+
+.PHONY: pull up down down-v clear-otel-data restart ps logs test validate smoke
 
 pull:
 	docker compose pull
@@ -11,6 +15,16 @@ down:
 
 down-v:
 	docker compose down -v
+
+clear-otel-data:
+	docker compose down
+	@for volume in $(OTEL_DATA_VOLUMES); do \
+		if docker volume inspect "$$volume" >/dev/null 2>&1; then \
+			docker volume rm "$$volume"; \
+		else \
+			echo "Volume $$volume does not exist"; \
+		fi; \
+	done
 
 restart:
 	docker compose restart
